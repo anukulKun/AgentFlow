@@ -186,7 +186,7 @@ export default function WorkflowEditor() {
     }
 
     try {
-      const response = await fetch("http://localhost:3002/v1/workflow", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/workflow`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

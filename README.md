@@ -186,13 +186,38 @@ Response rendered in chat UI
 pnpm install
 ```
 
+### Environment Setup
+
+Copy the example env file and configure your backend URL:
+
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local`:
+
+```env
+# For local development
+NEXT_PUBLIC_API_URL=http://localhost:3002
+
+# For production (set this to your deployed backend URL)
+# NEXT_PUBLIC_API_URL=https://your-backend.example.com
+```
+
 ### Development
 
 ```bash
 pnpm dev
 ```
 
-The app runs at `http://localhost:3000`. Ensure the backend API is running at `http://localhost:3002`.
+The app runs at `http://localhost:3000`. Ensure the backend API is running at the URL configured in `.env.local`.
+
+### Deployment
+
+1. Push to GitHub
+2. Import the repo on [Vercel](https://vercel.com)
+3. Add the environment variable `NEXT_PUBLIC_API_URL` pointing to your deployed backend
+4. Deploy
 
 ---
 

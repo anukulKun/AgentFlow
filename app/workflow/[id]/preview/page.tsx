@@ -105,7 +105,7 @@ export default function WorkflowPreviewPage() {
       }
 
       try {
-        const response = await fetch(`http://localhost:3002/v1/workflow/prompt/${workflowId}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/workflow/prompt/${workflowId}`)
         const data = await response.json()
         
         if (response.ok && data.prompt) {
@@ -141,7 +141,7 @@ export default function WorkflowPreviewPage() {
 
     try {
       // Call the chat API with the workflow prompt
-      const response = await fetch('http://localhost:3002/v1/chat', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ export default function WorkflowPreviewPage() {
 // Copy this code to integrate this workflow into your application
 
 const workflowId = '${workflowId}';
-const apiBaseUrl = 'http://localhost:4000/v1';
+const apiBaseUrl = '${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002'}/v1';
 
 // Function to fetch the workflow prompt
 async function fetchWorkflowPrompt(workflowId) {
