@@ -206,17 +206,32 @@ NEXT_PUBLIC_API_URL=http://localhost:3002
 
 ### Development
 
+**Frontend** (runs on `http://localhost:3000`):
 ```bash
+pnpm install
 pnpm dev
 ```
 
-The app runs at `http://localhost:3000`. Ensure the backend API is running at the URL configured in `.env.local`.
+**Backend** (runs on `http://localhost:3002`):
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env and add your Groq API key (free at https://console.groq.com/keys)
+npm run dev
+```
 
 ### Deployment
 
-1. Push to GitHub
-2. Import the repo on [Vercel](https://vercel.com)
-3. Add the environment variable `NEXT_PUBLIC_API_URL` pointing to your deployed backend
+**Frontend** → [Vercel](https://vercel.com):
+1. Import repo → set root directory to `/` (default)
+2. Add env var: `NEXT_PUBLIC_API_URL` = your deployed backend URL
+3. Deploy
+
+**Backend** → [Render](https://render.com):
+1. New Web Service → connect repo → set root directory to `backend`
+2. Build Command: `npm install` | Start Command: `node server.js`
+3. Add env var: `GROQ_API_KEY` = your Groq API key
 4. Deploy
 
 ---
